@@ -32,7 +32,7 @@
             </field> -->
             <page name='sales' position='after'>
                 <page name='nutrients' string='Nutrients'>
-                    <!-- <field name='nutrient_ids'/> -->
+                    <field name='nutrient_ids'/>
                     <!-- <tree> -->
                         <!-- <field name='nutrient_id'/> -->
                         <!-- <field name='nutrient_value'/> -->
@@ -153,8 +153,8 @@
         <field name='arch' type='xml'>
             <tree>
                 <field name='nutrient_name'/>
-                <field name='description'/>>
-                <field name='uom'/>>
+                <field name='description'/>
+                <field name='uom_id'/>
             </tree>
         </field>
     </record>

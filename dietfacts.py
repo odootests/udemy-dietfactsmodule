@@ -7,7 +7,7 @@ class Dietfacts_product_template(models.Model):
 	serving_size = fields.Float("Serving Size")
 	last_updated = fields.Date("Last Updated")
 	# diet_item = fields.Boolean("Diet Item")
-	# nutrient_ids = fields.One2many('product.single_nutrient', 'product_id', 'Product Nutrients')
+	nutrient_ids = fields.One2many('product.template.nutrient', 'product_id', 'Product Nutrients')
 
 class Dietfacts_drink_template(models.Model):
 	_name='product.template'
