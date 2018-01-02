@@ -41,9 +41,11 @@ class Dietfacts_res_users_mealitem(models.Model):
 
 class Dietfacts_product_nutrients(models.Model):
 	_name='product.nutrient'
-	nutrient_name = fields.Text("Nutrient Name")
+	name = fields.Char("Nutrient Name")
 	uom_id = fields.Many2one('product.uom', 'Unit of Measure')
-	description = fields.Text("Nutrient Description")
+	description = fields.Text("Description")
+	def __str__(self):
+		return self.name
 
 class Dietfacts_product_single_nutrient(models.Model):
 	_name='product.template.nutrient'

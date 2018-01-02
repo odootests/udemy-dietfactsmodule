@@ -32,6 +32,7 @@
             </field> -->
             <page name='sales' position='after'>
                 <page name='nutrients' string='Nutrients'>
+                
                     <field name='nutrient_ids' widget="one2many_list">
                         <tree editable='bottom'>
                             <field name='nutrient_id'/>
@@ -153,7 +154,7 @@
         <field name='model'>product.nutrient</field>
         <field name='arch' type='xml'>
             <tree>
-                <field name='nutrient_name'/>
+                <field name='name'/>
                 <field name='description'/>
                 <field name='uom_id'/>
             </tree>
