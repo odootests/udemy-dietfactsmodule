@@ -30,6 +30,10 @@
             <!-- <field name='categ_id' position='after'>
                 <field name='diet_item'/>
             </field> -->
+            <page name='sales' position='after'>
+                <page name='nutrients' string='Nutrients'>
+                </page>
+            </page>
         </field>
     </record>
 
@@ -135,7 +139,20 @@
         </field>
     </record>
 
+    <record id='dietfacts_action_nutrients' model='ir.actions.act_window'>
+        <field name='name'>Nutrients </field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>product.nutrients</field>
+        <field name='view_mode'>tree,kanban,form</field>
+        <field name='view_type'>form</field>
+        <field name='help' type='html'>
+            <p class='oe_view_nocontent_create'>Click to create a New Product Nutrient </p>
+        </field>
+    </record>
+
     <menuitem action="product.product_template_action_dietfacts" id="menu_product_template_action_dietfacts" parent="sales_team.menu_sales" sequence="14" />
     <menuitem action='meal_action_dietfacts' id='menu_meal_action_dietfacts' parent='sales_team.menu_sales' sequence='15'/>
-    <menuitem action='dietdrinks_action_dietfacts' id='menu_dietdrinks_action_dietfacts' parent='sales_team.menu_sales' sequence='16'/>>
+    <menuitem action='dietdrinks_action_dietfacts' id='menu_dietdrinks_action_dietfacts' parent='sales_team.menu_sales' sequence='16'/>
+    <menuitem action='dietfacts_action_nutrients' id='menu_dietfacts_action_nutrients' parent='sales_team.menu_sales' sequence='17'/>
+
 </odoo>
