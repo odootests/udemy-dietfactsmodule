@@ -32,6 +32,12 @@
             </field> -->
             <page name='sales' position='after'>
                 <page name='nutrients' string='Nutrients'>
+                    <!-- <field name='nutrient_ids'/> -->
+                    <!-- <tree> -->
+                        <!-- <field name='nutrient_id'/> -->
+                        <!-- <field name='nutrient_value'/> -->
+                        <!-- <field name='daily_percent'/> -->
+                    <!-- </tree> -->
                 </page>
             </page>
         </field>
@@ -101,7 +107,9 @@
     <record id='dietfacts_dietdrinks_tree_view' model='ir.ui.view'>
         <field name='model'>product.template</field>
         <field name='arch' type='xml'>
+            <tree>
                 <field name='key_ingredient'/>
+            </tree>
         </field>
     </record>
 
@@ -139,10 +147,22 @@
         </field>
     </record>
 
+    <record id='dietfacts_nutrients_tree_view' model='ir.ui.view'>
+        <field name='name'>All Nutrients</field>
+        <field name='model'>product.nutrient</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='nutrient_name'/>
+                <field name='description'/>>
+                <field name='uom'/>>
+            </tree>
+        </field>
+    </record>
+
     <record id='dietfacts_action_nutrients' model='ir.actions.act_window'>
         <field name='name'>Nutrients </field>
         <field name='type'>ir.actions.act_window</field>
-        <field name='res_model'>product.nutrients</field>
+        <field name='res_model'>product.nutrient</field>
         <field name='view_mode'>tree,kanban,form</field>
         <field name='view_type'>form</field>
         <field name='help' type='html'>
