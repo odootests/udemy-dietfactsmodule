@@ -38,6 +38,7 @@
                             <field name='nutrient_id'/>
                             <field name='nutrient_value'/>
                             <field name='daily_percent'/>
+                            <field name='uom_name'/>
                         </tree>
                     </field>
                 </page>

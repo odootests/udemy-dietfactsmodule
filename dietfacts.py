@@ -51,6 +51,7 @@ class Dietfacts_product_single_nutrient(models.Model):
 	_name='product.template.nutrient'
 	nutrient_id = fields.Many2one('product.nutrient', string="Product Nutrient")
 	product_id = fields.Many2one('product.template')
+	uom_name = fields.Char(related='nutrient_id.uom_id.name', readonly='True', string='UOM')
 	nutrient_value = fields.Float("Nutrient Value")
 	daily_percent = fields.Float("Daily Percentage")
 
