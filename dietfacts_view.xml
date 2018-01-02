@@ -97,9 +97,7 @@
     <record id='dietfacts_dietdrinks_tree_view' model='ir.ui.view'>
         <field name='model'>product.template</field>
         <field name='arch' type='xml'>
-            <tree> 
                 <field name='key_ingredient'/>
-            </tree>
         </field>
     </record>
 
