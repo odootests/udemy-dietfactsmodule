@@ -8,6 +8,11 @@ class Dietfacts_product_template(models.Model):
 	last_updated = fields.Date("Last Updated")
 	# diet_item = fields.Boolean("Diet Item")
 
+class Dietfacts_drink_template(models.Model):
+	_name='diet.drink'
+	_inherit='product.template'
+	key_ingredient = fields.Char("Key Ingredient")
+
 class Dietfacts_res_users_meal(models.Model):
 	_name='res.users.meal'
 	name=fields.Char('Meal Name')

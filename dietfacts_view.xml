@@ -11,7 +11,7 @@
             </field>
             <field name='name' position='after'>
                 <field name='serving_size'/>
-            </field>
+            </field> 
             <field name='type' position='after'>
                 <field name='last_updated'/>
             </field>
