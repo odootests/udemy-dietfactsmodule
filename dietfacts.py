@@ -8,6 +8,15 @@ class Dietfacts_product_template(models.Model):
 	last_updated = fields.Date("Last Updated")
 	# diet_item = fields.Boolean("Diet Item")
 	nutrient_ids = fields.One2many('product.template.nutrient', 'product_id', 'Product Nutrients')
+	nutrition_score = fields.Float(string="Nutrition Score", compute="calc_total_score", store=True)
+	
+	@api.one
+	@api.depends('nutrient_ids', 'nutrient_ids.nutrient_value')
+	def calc_total_score(self):
+		total_score = 0
+		for item in seld.nutrient_ids:
+			total_score += (item.nutrient_value)
+		self.nutrition_score = total_score
 
 class Dietfacts_drink_template(models.Model):
 	_name='product.template'
