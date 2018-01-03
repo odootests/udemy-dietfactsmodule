@@ -15,7 +15,10 @@ class Dietfacts_product_template(models.Model):
 	def calc_total_score(self):
 		total_score = 0
 		for item in self.nutrient_ids:
-			total_score += (item.nutrient_value)
+			if item.nutrient_id.name == 'Sodium':
+				total_score += (item.nutrient_value)*5
+			else:
+				total_score += (item.nutrient_value)
 		self.nutrition_score = total_score
 
 class Dietfacts_drink_template(models.Model):
