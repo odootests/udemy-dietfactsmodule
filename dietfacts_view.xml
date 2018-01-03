@@ -11,7 +11,7 @@
             </field>
             <field name='name' position='after'>
                 <field name='serving_size'/>
-            </field>
+            </field> 
             <field name='type' position='after'>
                 <field name='last_updated'/>
             </field>
@@ -26,10 +26,24 @@
                 <field name='calories'/> -->
                 <field name='serving_size'/>
                 <field name='last_updated'/>
+                <field name='nutrition_score'/>>
             </field>
             <!-- <field name='categ_id' position='after'>
                 <field name='diet_item'/>
             </field> -->
+            <page name='sales' position='after'>
+                <page name='nutrients' string='Nutrients'>
+                
+                    <field name='nutrient_ids' widget="one2many_list">
+                        <tree editable='bottom'>
+                            <field name='nutrient_id'/>
+                            <field name='nutrient_value'/>
+                            <field name='daily_percent'/>
+                            <field name='uom_name'/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
         </field>
     </record>
 
@@ -95,6 +109,26 @@
         </field>
     </record>
 
+    <record id='dietfacts_dietdrinks_tree_view' model='ir.ui.view'>
+        <field name='model'>product.template</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='key_ingredient'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='dietfacts_dietdrinks_form_view' model='ir.ui.view'>
+        <field name='inherit_id' ref='product.product_template_only_form_view'/>
+        <field name='model'>product.template</field>
+        <field name='view_type'>form</field>
+        <field name='arch' type='xml'>
+            <field name='categ_id' position='after'>
+                <field name='key_ingredient'/>
+            </field>
+        </field>
+    </record>
+
     <record id='meal_action_dietfacts' model='ir.actions.act_window'>
         <field name='name'>Meals </field>
         <field name='type'>ir.actions.act_window</field>
@@ -106,9 +140,44 @@
         </field>
     </record>
 
-    <menuitem id="sale_menu_root" name="Sales" web_icon="sale,static/description/icon.png" sequence="7"/>
-      <menuitem id="product_menu_catalog" name="Diet Catalog" action="product.product_template_action" parent="sale_menu_root" sequence="4"/>
+    <record id='dietdrinks_action_dietfacts' model='ir.actions.act_window'>
+        <field name='name'>Diet Drinks </field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>product.template</field>
+        <field name='view_mode'>tree,kanban,form</field>
+        <field name='view_type'>form</field>
+        <field name='domain'>[('categ_id', '=', 'Diet Drinks')]</field>
+        <field name='help' type='html'>
+            <p class='oe_view_nocontent_create'>Click to create a New Diet Drink </p>
+        </field>
+    </record>
 
-    <menuitem action="product.product_template_action_dietfacts" id="menu_product_template_action_dietfacts" parent="product_menu_catalog" sequence="6" />
-    <menuitem action='meal_action_dietfacts' id='menu_meal_action_dietfacts' parent='product_menu_catalog' sequence='15'/>
+    <record id='dietfacts_nutrients_tree_view' model='ir.ui.view'>
+        <field name='name'>All Nutrients</field>
+        <field name='model'>product.nutrient</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='name'/>
+                <field name='description'/>
+                <field name='uom_id'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='dietfacts_action_nutrients' model='ir.actions.act_window'>
+        <field name='name'>Nutrients </field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>product.nutrient</field>
+        <field name='view_mode'>tree,kanban,form</field>
+        <field name='view_type'>form</field>
+        <field name='help' type='html'>
+            <p class='oe_view_nocontent_create'>Click to create a New Product Nutrient </p>
+        </field>
+    </record>
+
+    <menuitem action="product.product_template_action_dietfacts" id="menu_product_template_action_dietfacts" parent="sales_team.menu_sales" sequence="14" />
+    <menuitem action='meal_action_dietfacts' id='menu_meal_action_dietfacts' parent='sales_team.menu_sales' sequence='15'/>
+    <menuitem action='dietdrinks_action_dietfacts' id='menu_dietdrinks_action_dietfacts' parent='sales_team.menu_sales' sequence='16'/>
+    <menuitem action='dietfacts_action_nutrients' id='menu_dietfacts_action_nutrients' parent='sales_team.menu_sales' sequence='17'/>
+
 </odoo>
