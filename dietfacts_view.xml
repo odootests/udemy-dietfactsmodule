@@ -26,6 +26,7 @@
                 <field name='calories'/> -->
                 <field name='serving_size'/>
                 <field name='last_updated'/>
+                <field name='nutrition_score'/>>
             </field>
             <!-- <field name='categ_id' position='after'>
                 <field name='diet_item'/>

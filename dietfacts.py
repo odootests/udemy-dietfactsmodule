@@ -14,7 +14,7 @@ class Dietfacts_product_template(models.Model):
 	@api.depends('nutrient_ids', 'nutrient_ids.nutrient_value')
 	def calc_total_score(self):
 		total_score = 0
-		for item in seld.nutrient_ids:
+		for item in self.nutrient_ids:
 			total_score += (item.nutrient_value)
 		self.nutrition_score = total_score
 
