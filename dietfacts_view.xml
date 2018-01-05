@@ -182,10 +182,12 @@
 
     <template id='product.nutrition'>
         <t t-call='report.html_container'>
-            <t t-foreach="docs" t-as="o">
+            <t t-foreach="docs" t-as="obj">
                 <t t-call="report.external_layout">
                     <div class='page'>
                         <div class='oe_structure' />
+                        <h1> Nutrition Report </h1>
+                        <h3> Product Name: <span t-field='obj.name' /> </h3>
                     </div>
                 </t>
             </t>
