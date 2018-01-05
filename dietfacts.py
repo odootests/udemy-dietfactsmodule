@@ -34,6 +34,14 @@ class Dietfacts_res_users_meal(models.Model):
 	total_calories = fields.Integer(string='Meal Total-Calories', store=True, compute='_sumcalories')
 	user_id = fields.Many2one('res.users', 'Meal Eater')
 	notes = fields.Char("Meal Notes")
+	large_meal = fields.Boolean("Large Meal")
+
+	@api.onchange('total_calories')
+	def check_largemeal(self):
+		if self.total_calories > 500:
+			self.large_meal = True
+		else:
+			self.large_meal = False
 
 	@api.one
 	@api.depends('item_ids', 'item_ids.servings')

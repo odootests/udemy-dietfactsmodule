@@ -26,7 +26,7 @@
                 <field name='calories'/> -->
                 <field name='serving_size'/>
                 <field name='last_updated'/>
-                <field name='nutrition_score'/>>
+                <field name='nutrition_score'/>
             </field>
             <!-- <field name='categ_id' position='after'>
                 <field name='diet_item'/>
@@ -91,6 +91,7 @@
                     <field name='total_calories'/>
                     <field name='user_id'/>
                     <field name='notes'/>
+                    <field name='large_meal'/>
                 </group>
                 <notebook>
                     <page name='mealitems' string='Meal Items'>
