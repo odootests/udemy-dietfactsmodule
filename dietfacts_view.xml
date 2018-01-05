@@ -188,6 +188,16 @@
                         <div class='oe_structure' />
                         <h1> Nutrition Report </h1>
                         <h3> Product Name: <span t-field='obj.name' /> </h3>
+                        <p> Nutrition Score: <span t-field='obj.nutrition_score' /> </p>
+                        <p> Calories: <span t-field='obj.calories' /> </p>
+                        <h3> Nutrition Details </h3>
+                        <t t-foreach='obj.nutrient_ids' t-as='sub_obj'>
+                            <p> 
+                                <span t-field='sub_obj.nutrient_id.name' />
+                                <span t-field='sub_obj.nutrient_value' /> 
+                                <span t-field='sub_obj.uom_name' /> 
+                            </p>
+                        </t>
                     </div>
                 </t>
             </t>
