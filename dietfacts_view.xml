@@ -180,5 +180,17 @@
     <menuitem action='dietdrinks_action_dietfacts' id='menu_dietdrinks_action_dietfacts' parent='sales_team.menu_sales' sequence='16'/>
     <menuitem action='dietfacts_action_nutrients' id='menu_dietfacts_action_nutrients' parent='sales_team.menu_sales' sequence='17'/>
 
+    <template id='product.nutrition'>
+        <t t-call='report.html_container'>
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report.external_layout">
+                    <div class='page'>
+                        <div class='oe_structure' />
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
     <report id='dietfacts_report' model='product.template' string='Nutrition Products' report_type='qweb-pdf' name='product.nutrition' file='product.nutrition'/>
 </odoo>
