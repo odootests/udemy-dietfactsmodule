@@ -6,13 +6,29 @@
                 <t t-call="report.external_layout">
                     <div class='page'>
                         <div class='oe_structure'/>
-                        <h1> User Meals</h1>
-                        <h3> Meal Name: <strong> <span t-field='obj.name' /> </strong> </h3>
-                        <p> Meal Details: <strong> <span t-field='obj.user_id.name'/> </strong> had a 
-                            <span t-if='obj.large_meal'> Large Meal </span> 
-                            <span t-if='not obj.large_meal'> Normal Meal </span>
-                            with <span t-field='obj.total_calories'/> Calories on <span t-field='obj.meal_date'/>
-                        </p>
+                        <div class='col-sm-12'>
+                            <h1 class='text-center'> User Meals</h1>
+                            <h3> Meal Name: <strong> <span t-field='obj.name' /> </strong> </h3>
+                            <p> Meal Details: <strong> <span t-field='obj.user_id.name'/> </strong> had a 
+                                <span t-if='obj.large_meal'> Large Meal </span> 
+                                <span t-if='not obj.large_meal'> Normal Meal </span>
+                                with <span t-field='obj.total_calories'/> Calories on <span t-field='obj.meal_date'/>
+                            </p>
+                        </div>
+                        <div class='col-sm-12' t-if='obj.item_ids'>
+                            <h3> Meal Items</h3>
+                            <t t-foreach='obj.item_ids' t-as='sub_obj'>
+                                <p> Meal Name: <span t-field='sub_obj.item_id.name'/> </p>
+                                <p> Servings: <span t-field='sub_obj.servings' />
+                                    <t t-if='sub_obj.servings &gt; 1'>
+                                        <span>Times</span>
+                                    </t>
+                                    <t t-if='sub_obj.servings == 1'>
+                                        <span>Time</span>
+                                    </t>
+                                </p>
+                            </t>
+                        </div>
                     </div>
                 </t>
             </t>
