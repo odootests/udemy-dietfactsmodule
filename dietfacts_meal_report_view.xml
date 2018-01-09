@@ -17,17 +17,28 @@
                         </div>
                         <div class='col-sm-12' t-if='obj.item_ids'>
                             <h3> Meal Items</h3>
-                            <t t-foreach='obj.item_ids' t-as='sub_obj'>
-                                <p> Meal Name: <span t-field='sub_obj.item_id.name'/> </p>
-                                <p> Servings: <span t-field='sub_obj.servings' />
-                                    <t t-if='sub_obj.servings &gt; 1'>
-                                        <span>Times</span>
-                                    </t>
-                                    <t t-if='sub_obj.servings == 1'>
-                                        <span>Time</span>
-                                    </t>
-                                </p>
-                            </t>
+                            <table class='table'>
+                                <thead>
+                                    <th>Meal Name</th>
+                                    <th>Servings</th>
+                                    <th>Calorie Count</th>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach='obj.item_ids' t-as='sub_obj'>
+                                        <td> <span t-field='sub_obj.item_id.name'/> </td>
+                                        <td> 
+                                            <span t-field='sub_obj.servings' />
+                                            <t t-if='sub_obj.servings &gt; 1'>
+                                                <span>Times</span>
+                                            </t>
+                                            <t t-if='sub_obj.servings == 1'>
+                                                <span>Time</span>
+                                            </t>
+                                        </td>
+                                        <td> <span t-field='sub_obj.item_calories' /> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </t>
