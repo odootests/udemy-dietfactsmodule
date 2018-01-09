@@ -8,12 +8,17 @@
                         <div class='oe_structure'/>
                         <h1> User Meals</h1>
                         <h3> Meal Name: <strong> <span t-field='obj.name' /> </strong> </h3>
+                        <p> Meal Details: <strong> <span t-field='obj.user_id.name'/> </strong> had a 
+                            <span t-if='obj.large_meal'> Large Meal </span> 
+                            <span t-if='not obj.large_meal'> Normal Meal </span>
+                            with <span t-field='obj.total_calories'/> Calories on <span t-field='obj.meal_date'/>
+                        </p>
                     </div>
                 </t>
             </t>
         </t>
     </template>
-    
+
     <report id='dietfacts_meal_report' model='res.users.meal' string='User Meals' report_type='qweb-pdf' name='udemy-dietfactsmodule.users_meals' file='users_meals'/>
     
 </odoo>
