@@ -17,7 +17,13 @@ reader = csv.reader(open(filename, 'rb'))
 for row in reader:
 	product_name = row[0]
 	product_calorie = row[1]
-	record = [{'name': product_name, 'calories':product_calorie}]
-	odoo_api.execute_kw(database, user_id, password, 'product.template', 'create', record)
-	print("Name: %s and Calories: %s" %(product_name, product_calorie))
+
+	filter_byname = [[('name', '=', product_name)]]
+	existing_product = odoo_api.execute_kw(database, user_id, password, 'product.template', 'search', filter_byname)
+	if existing_product:
+		print("Product Exists - ID: %s" %str(existing_product))
+	else:
+		record = [{'name': product_name, 'calories':product_calorie}]
+		odoo_api.execute_kw(database, user_id, password, 'product.template', 'create', record)
+		print("Added Product Name: %s and Calories: %s" %(product_name, product_calorie))
 
